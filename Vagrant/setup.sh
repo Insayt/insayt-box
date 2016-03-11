@@ -30,3 +30,7 @@ cp /var/www/Vagrant/config/nginx_vhost /etc/nginx/sites-available/nginx_vhost
 ln -s /etc/nginx/sites-available/nginx_vhost /etc/nginx/sites-enabled/
 rm -rf /etc/nginx/sites-available/default
 service nginx restart
+
+echo "Install Composer"
+apt-get install curl
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
