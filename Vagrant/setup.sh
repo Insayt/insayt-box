@@ -1,9 +1,5 @@
 #!/bin/bash
 
-echo "Updating repository"
-add-apt-repository ppa:ondrej/php5 -y
-apt-get update > /dev/null
-
 echo "Install base packages"
 apt-get install curl build-essential python-software-properties
 
@@ -13,6 +9,7 @@ apt-get install git -y
 echo "Installing PHP"
 apt-get install php5-common php5-dev php5-cli php5-fpm -y
 apt-get install php5-curl php5-gd php5-mcrypt php5-mysql -y
+php5enmod mcrypt
 
 echo "Preparing MySQL"
 apt-get install debconf-utils -y
@@ -38,5 +35,5 @@ rm -rf /etc/nginx/sites-available/default
 echo "Install Composer"
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
-service nginx restart
 service php5-fpm restart
+service nginx restart
